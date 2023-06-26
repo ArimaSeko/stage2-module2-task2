@@ -24,8 +24,12 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         List<String> list= Users.getInstance().getUsers();
-        for (String str: list) {if(req.getAttribute("login").equals(str))session.setAttribute("user", true);
+        for (String str: list) {if(session.getAttribute("login").equals(str)&&
+                session.getAttribute("password")!=null){ session.setAttribute("user", true);
         resp.sendRedirect("/user/hello.jsp");
+        req.setAttribute("user",true);
+        }
+            else resp.sendRedirect("/login.jsp");
         }
     }
 }
