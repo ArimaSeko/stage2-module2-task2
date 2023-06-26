@@ -13,7 +13,7 @@ public class AuthFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        String username = filterConfig.getInitParameter("username");
+        String username = filterConfig.getInitParameter("login");
         String password = filterConfig.getInitParameter("password");
     }
 
